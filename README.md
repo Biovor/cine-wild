@@ -11,7 +11,9 @@ Ensuite ouvrir le projet et faire un composer install.
 Paramétré le fichier .env pour faire la connexion avec la base de données.
 
 Création de la base de données avec doctrine :  php bin/console doctrine:database:create
+
 Mettre à jour les entités de l’application avec la base : php bin/console make:migration
+
 Validé et appliqué les modifications dans la BDD : php bin/console doctrine:migrations:migrate
 
 Chargé les fixtures avec : php bin/console doctrine:fixtures:load
