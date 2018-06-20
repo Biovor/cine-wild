@@ -1,0 +1,562 @@
+<?php
+/**
+ * Created by PhpStorm.
+ * User: biovor
+ * Date: 17/06/18
+ * Time: 02:05
+ */
+namespace App\DataFixtures;
+
+
+use App\Entity\Films;
+use Doctrine\Bundle\FixturesBundle\Fixture;
+use Doctrine\Common\DataFixtures\DependentFixtureInterface;
+use Doctrine\Common\Persistence\ObjectManager;
+
+class FilmsFixtures extends Fixture implements DependentFixtureInterface
+{
+    public function load(ObjectManager $manager)
+    {
+        $i= 1;
+        $film = new Films();
+        $film->setTitle('Coco');
+        $film->setOriginalTitle('Coco');
+        $film->setRelaseDate(new \DateTime('2017-11-29'));
+        $film->setDuration('1H45');
+        $film->setPicture($this->getReference('picture' . $i));
+        $film->setSynopsie('Depuis déjà plusieurs générations, la musique est bannie dans la famille de Miguel. Un vrai déchirement pour le jeune garçon dont le rêve ultime est de devenir un musicien aussi accompli que son idole, Ernesto de la Cruz. 
+Bien décidé à prouver son talent, Miguel, par un étrange concours de circonstances, se retrouve propulsé dans un endroit aussi étonnant que coloré : le Pays des Morts. Là, il se lie d’amitié avec Hector, un gentil garçon mais un peu filou sur les bords. Ensemble, ils vont accomplir un voyage extraordinaire qui leur révèlera la véritable histoire qui se cache derrière celle de la famille de Miguel…');
+        $film->setPressNote(mt_rand(1, 10));
+        $film->setPublicNote(mt_rand(1, 10));
+        $film->setNovelty(true);
+        $film->setLienBa('http://www.allocine.fr/_video/iblogvision.aspx?cmedia=19573991');
+        $film->setCritical('Voyez ce jeu exquis wallon, de graphie en kit mais bref. Portez ce vieux whisky au juge blond qui fume sur son ?le int?rieure, ? c?t? de l\'alc?ve ovo?de, o? les b?ches se consument dans l\'?tre, ce qui lui permet de penser ? la c?nogen?se de l\'?tre dont il est question dans la cause ambigu? entendue ? Mo?, dans un capharna?m qui, pense-t-il, diminue ?? et l? la qualit? de son ?uvre. Prouvez, beau juge, que le fameux sandwich au yak tue. L\'?le exigu?, O? l\'ob?se jury m?r F?te l\'ha? volap?k, ?ne ex ?quo au whist, ?tez ce v?u d??u. Vieux pelage que je modifie : breitschwanz ou yak ? D?s No?l o? un z?phyr ha? me v?t de gla?ons w?rmiens, je d?ne d?exquis r?tis de b?uf au kir ? l?a? d??ge m?r & c?tera ! Fougueux, j\'enivre la squaw au pack de beau zythum. Ketch, yawl, jonque flambant neuve? jugez des prix ! Voyez le brick g?ant que j\'examine pr?s du wharf. Portez ce vieux whisky au juge blond qui fume. B?chez la queue du wagon-taxi avec les pyjamas du fakir. Voix ambigu? d\'un c?ur qui, au z?phyr, pr?f?re les jattes de kiwis. Mon pauvre z?bu ankylos?');
+        $film->setActors([$this->getReference('actor'.mt_rand(1, 10)),$this->getReference('actor'.mt_rand(11, 20)),$this->getReference('actor'.mt_rand(21, 30))]);
+        $film->setDirectors([$this->getReference('director'.mt_rand(1, 15))]);
+        $film->setPublicAge($this->getReference(mt_rand(1, 7)));
+        $film->setTypes([$this->getReference('Anim'), $this->getReference('Fanta')]);
+        $film->setYearOfProduction($this->getReference('2017'));
+        $manager->persist($film);
+        $this->addReference('filme '.$i,$film);
+        $i ++;
+
+        $film = new Films();
+        $film->setTitle('Forrest Gump');
+        $film->setOriginalTitle('Forrest Gump');
+        $film->setRelaseDate(new \DateTime('1994-10-5'));
+        $film->setDuration('2H20');
+        $film->setPicture($this->getReference('picture' . $i));
+        $film->setSynopsie('Quelques décennies d\'histoire américaine, des années 1940 à la fin du XXème siècle, à travers le regard et l\'étrange odyssée d\'un homme simple et pur, Forrest Gump.');
+        $film->setPressNote(mt_rand(1, 10));
+        $film->setPublicNote(mt_rand(1, 10));
+        $film->setNovelty(false);
+        $film->setLienBa('http://www.allocine.fr/_video/iblogvision.aspx?cmedia=19376882');
+        $film->setCritical('Voyez ce jeu exquis wallon, de graphie en kit mais bref. Portez ce vieux whisky au juge blond qui fume sur son ?le int?rieure, ? c?t? de l\'alc?ve ovo?de, o? les b?ches se consument dans l\'?tre, ce qui lui permet de penser ? la c?nogen?se de l\'?tre dont il est question dans la cause ambigu? entendue ? Mo?, dans un capharna?m qui, pense-t-il, diminue ?? et l? la qualit? de son ?uvre. Prouvez, beau juge, que le fameux sandwich au yak tue. L\'?le exigu?, O? l\'ob?se jury m?r F?te l\'ha? volap?k, ?ne ex ?quo au whist, ?tez ce v?u d??u. Vieux pelage que je modifie : breitschwanz ou yak ? D?s No?l o? un z?phyr ha? me v?t de gla?ons w?rmiens, je d?ne d?exquis r?tis de b?uf au kir ? l?a? d??ge m?r & c?tera ! Fougueux, j\'enivre la squaw au pack de beau zythum. Ketch, yawl, jonque flambant neuve? jugez des prix ! Voyez le brick g?ant que j\'examine pr?s du wharf. Portez ce vieux whisky au juge blond qui fume. B?chez la queue du wagon-taxi avec les pyjamas du fakir. Voix ambigu? d\'un c?ur qui, au z?phyr, pr?f?re les jattes de kiwis. Mon pauvre z?bu ankylos?');
+        $film->setActors([$this->getReference('actor'.mt_rand(1, 10)),$this->getReference('actor'.mt_rand(11, 20)),$this->getReference('actor'.mt_rand(21, 30))]);
+        $film->setDirectors([$this->getReference('director'.mt_rand(1, 15))]);
+        $film->setPublicAge($this->getReference(mt_rand(1, 7)));
+        $film->setTypes([$this->getReference('Come'), $this->getReference('Drama'), $this->getReference('Fanta')]);
+        $film->setYearOfProduction($this->getReference('1994'));
+        $manager->persist($film);
+        $this->addReference('filme '.$i,$film);
+        $i ++;
+
+        $film = new Films();
+        $film->setTitle('Your Name');
+        $film->setOriginalTitle(' Kimi no na wa');
+        $film->setRelaseDate(new \DateTime('2016-12-28'));
+        $film->setDuration('1H50');
+        $film->setPicture($this->getReference('picture' . $i));
+        $film->setSynopsie('Mitsuha, adolescente coincée dans une famille traditionnelle, rêve de quitter ses montagnes natales pour découvrir la vie trépidante de Tokyo. Elle est loin d’imaginer pouvoir vivre l’aventure urbaine dans la peau de… Taki, un jeune lycéen vivant à Tokyo, occupé entre son petit boulot dans un restaurant italien et ses nombreux amis.');
+        $film->setPressNote(mt_rand(1, 10));
+        $film->setPublicNote(mt_rand(1, 10));
+        $film->setNovelty(true);
+        $film->setLienBa('http://www.allocine.fr/_video/iblogvision.aspx?cmedia=19565778');
+        $film->setCritical('Voyez ce jeu exquis wallon, de graphie en kit mais bref. Portez ce vieux whisky au juge blond qui fume sur son ?le int?rieure, ? c?t? de l\'alc?ve ovo?de, o? les b?ches se consument dans l\'?tre, ce qui lui permet de penser ? la c?nogen?se de l\'?tre dont il est question dans la cause ambigu? entendue ? Mo?, dans un capharna?m qui, pense-t-il, diminue ?? et l? la qualit? de son ?uvre. Prouvez, beau juge, que le fameux sandwich au yak tue. L\'?le exigu?, O? l\'ob?se jury m?r F?te l\'ha? volap?k, ?ne ex ?quo au whist, ?tez ce v?u d??u. Vieux pelage que je modifie : breitschwanz ou yak ? D?s No?l o? un z?phyr ha? me v?t de gla?ons w?rmiens, je d?ne d?exquis r?tis de b?uf au kir ? l?a? d??ge m?r & c?tera ! Fougueux, j\'enivre la squaw au pack de beau zythum. Ketch, yawl, jonque flambant neuve? jugez des prix ! Voyez le brick g?ant que j\'examine pr?s du wharf. Portez ce vieux whisky au juge blond qui fume. B?chez la queue du wagon-taxi avec les pyjamas du fakir. Voix ambigu? d\'un c?ur qui, au z?phyr, pr?f?re les jattes de kiwis. Mon pauvre z?bu ankylos?');
+        $film->setActors([$this->getReference('actor'.mt_rand(1, 10)),$this->getReference('actor'.mt_rand(11, 20)),$this->getReference('actor'.mt_rand(21, 30))]);
+        $film->setDirectors([$this->getReference('director'.mt_rand(1, 15))]);
+        $film->setPublicAge($this->getReference(mt_rand(1, 7)));
+        $film->setTypes([$this->getReference('Anim'), $this->getReference('Fanta')]);
+        $film->setYearOfProduction($this->getReference('2016'));
+        $manager->persist($film);
+        $this->addReference('filme '.$i,$film);
+        $i ++;
+
+        $film = new Films();
+        $film->setTitle('La Liste de Schindler');
+        $film->setOriginalTitle('Schindler\'s List');
+        $film->setRelaseDate(new \DateTime('1994-03-02'));
+        $film->setDuration('3H15');
+        $film->setPicture($this->getReference('picture' . $i));
+        $film->setSynopsie('Evocation des années de guerre d\'Oskar Schindler, industriel autrichien rentré à Cracovie en 1939 avec les troupes allemandes. Il va, tout au long de la guerre, protéger des juifs en les faisant travailler dans sa fabrique.');
+        $film->setPressNote(mt_rand(1, 10));
+        $film->setPublicNote(mt_rand(1, 10));
+        $film->setNovelty(false);
+        $film->setLienBa('http://www.allocine.fr/_video/iblogvision.aspx?cmedia=18802634');
+        $film->setCritical('Voyez ce jeu exquis wallon, de graphie en kit mais bref. Portez ce vieux whisky au juge blond qui fume sur son ?le int?rieure, ? c?t? de l\'alc?ve ovo?de, o? les b?ches se consument dans l\'?tre, ce qui lui permet de penser ? la c?nogen?se de l\'?tre dont il est question dans la cause ambigu? entendue ? Mo?, dans un capharna?m qui, pense-t-il, diminue ?? et l? la qualit? de son ?uvre. Prouvez, beau juge, que le fameux sandwich au yak tue. L\'?le exigu?, O? l\'ob?se jury m?r F?te l\'ha? volap?k, ?ne ex ?quo au whist, ?tez ce v?u d??u. Vieux pelage que je modifie : breitschwanz ou yak ? D?s No?l o? un z?phyr ha? me v?t de gla?ons w?rmiens, je d?ne d?exquis r?tis de b?uf au kir ? l?a? d??ge m?r & c?tera ! Fougueux, j\'enivre la squaw au pack de beau zythum. Ketch, yawl, jonque flambant neuve? jugez des prix ! Voyez le brick g?ant que j\'examine pr?s du wharf. Portez ce vieux whisky au juge blond qui fume. B?chez la queue du wagon-taxi avec les pyjamas du fakir. Voix ambigu? d\'un c?ur qui, au z?phyr, pr?f?re les jattes de kiwis. Mon pauvre z?bu ankylos?');
+        $film->setActors([$this->getReference('actor'.mt_rand(1, 10)),$this->getReference('actor'.mt_rand(11, 20)),$this->getReference('actor'.mt_rand(21, 30))]);
+        $film->setDirectors([$this->getReference('director'.mt_rand(1, 15))]);
+        $film->setPublicAge($this->getReference(mt_rand(1, 7)));
+        $film->setTypes([$this->getReference('Histo'), $this->getReference('Drama')]);
+        $film->setYearOfProduction($this->getReference('1994'));
+        $manager->persist($film);
+        $this->addReference('filme '.$i,$film);
+        $i ++;
+
+        $film = new Films();
+        $film->setTitle('Avengers: Infinity War');
+        $film->setOriginalTitle('Avengers: Infinity War');
+        $film->setRelaseDate(new \DateTime('2018-04-25'));
+        $film->setDuration('2H36');
+        $film->setPicture($this->getReference('picture' . $i));
+        $film->setSynopsie('Les Avengers et leurs alliés devront être prêts à tout sacrifier pour neutraliser le redoutable Thanos avant que son attaque éclair ne conduise à la destruction complète de l’univers. ');
+        $film->setPressNote(mt_rand(1, 10));
+        $film->setPublicNote(mt_rand(1, 10));
+        $film->setNovelty(true);
+        $film->setLienBa('http://www.allocine.fr/_video/iblogvision.aspx?cmedia=19577543');
+        $film->setCritical('Voyez ce jeu exquis wallon, de graphie en kit mais bref. Portez ce vieux whisky au juge blond qui fume sur son ?le int?rieure, ? c?t? de l\'alc?ve ovo?de, o? les b?ches se consument dans l\'?tre, ce qui lui permet de penser ? la c?nogen?se de l\'?tre dont il est question dans la cause ambigu? entendue ? Mo?, dans un capharna?m qui, pense-t-il, diminue ?? et l? la qualit? de son ?uvre. Prouvez, beau juge, que le fameux sandwich au yak tue. L\'?le exigu?, O? l\'ob?se jury m?r F?te l\'ha? volap?k, ?ne ex ?quo au whist, ?tez ce v?u d??u. Vieux pelage que je modifie : breitschwanz ou yak ? D?s No?l o? un z?phyr ha? me v?t de gla?ons w?rmiens, je d?ne d?exquis r?tis de b?uf au kir ? l?a? d??ge m?r & c?tera ! Fougueux, j\'enivre la squaw au pack de beau zythum. Ketch, yawl, jonque flambant neuve? jugez des prix ! Voyez le brick g?ant que j\'examine pr?s du wharf. Portez ce vieux whisky au juge blond qui fume. B?chez la queue du wagon-taxi avec les pyjamas du fakir. Voix ambigu? d\'un c?ur qui, au z?phyr, pr?f?re les jattes de kiwis. Mon pauvre z?bu ankylos?');
+        $film->setActors([$this->getReference('actor'.mt_rand(1, 10)),$this->getReference('actor'.mt_rand(11, 20)),$this->getReference('actor'.mt_rand(21, 30))]);
+        $film->setDirectors([$this->getReference('director'.mt_rand(1, 15)), $this->getReference('director'.mt_rand(1, 15))]);
+        $film->setPublicAge($this->getReference(mt_rand(1, 7)));
+        $film->setTypes([$this->getReference('Avent'), $this->getReference('Action')]);
+        $film->setYearOfProduction($this->getReference('2018'));
+        $manager->persist($film);
+        $this->addReference('filme '.$i,$film);
+        $i ++;
+
+        $film = new Films();
+        $film->setTitle('12 hommes en colère');
+        $film->setOriginalTitle('Twelve Angry Men');
+        $film->setRelaseDate(new \DateTime('1957-09-04'));
+        $film->setDuration('1H35');
+        $film->setPicture($this->getReference('picture' . $i));
+        $film->setSynopsie('Lors d\'un procès, un juré émet l\'hypothèse que l\'homme qu\'il doit juger n\'est peut-être
+        pas coupable. Il va tenter de convaincre les onze autres jurés.');
+        $film->setPressNote(mt_rand(1, 10));
+        $film->setPublicNote(mt_rand(1, 10));
+        $film->setNovelty(false);
+        $film->setLienBa('http://www.allocine.fr/_video/iblogvision.aspx?cmedia=19463834');
+        $film->setCritical('Voyez ce jeu exquis wallon, de graphie en kit mais bref. Portez ce vieux whisky au juge blond qui fume sur son ?le int?rieure, ? c?t? de l\'alc?ve ovo?de, o? les b?ches se consument dans l\'?tre, ce qui lui permet de penser ? la c?nogen?se de l\'?tre dont il est question dans la cause ambigu? entendue ? Mo?, dans un capharna?m qui, pense-t-il, diminue ?? et l? la qualit? de son ?uvre. Prouvez, beau juge, que le fameux sandwich au yak tue. L\'?le exigu?, O? l\'ob?se jury m?r F?te l\'ha? volap?k, ?ne ex ?quo au whist, ?tez ce v?u d??u. Vieux pelage que je modifie : breitschwanz ou yak ? D?s No?l o? un z?phyr ha? me v?t de gla?ons w?rmiens, je d?ne d?exquis r?tis de b?uf au kir ? l?a? d??ge m?r & c?tera ! Fougueux, j\'enivre la squaw au pack de beau zythum. Ketch, yawl, jonque flambant neuve? jugez des prix ! Voyez le brick g?ant que j\'examine pr?s du wharf. Portez ce vieux whisky au juge blond qui fume. B?chez la queue du wagon-taxi avec les pyjamas du fakir. Voix ambigu? d\'un c?ur qui, au z?phyr, pr?f?re les jattes de kiwis. Mon pauvre z?bu ankylos?');
+        $film->setActors([$this->getReference('actor'.mt_rand(1, 10)),$this->getReference('actor'.mt_rand(11, 20)),$this->getReference('actor'.mt_rand(21, 30))]);
+        $film->setDirectors([$this->getReference('director'.mt_rand(1, 15))]);
+        $film->setPublicAge($this->getReference(mt_rand(1, 7)));
+        $film->setTypes([$this->getReference('Drama')]);
+        $film->setYearOfProduction($this->getReference('1995'));
+        $manager->persist($film);
+        $this->addReference('filme '.$i,$film);
+        $i ++;
+
+        $film = new Films();
+        $film->setTitle('Lion');
+        $film->setOriginalTitle('Lion');
+        $film->setRelaseDate(new \DateTime('2017-02-22'));
+        $film->setDuration('1H58');
+        $film->setPicture($this->getReference('picture' . $i));
+        $film->setSynopsie('Une incroyable histoire vraie :  à 5 ans, Saroo se retrouve seul dans un train traversant l’Inde qui l’emmène malgré lui à des milliers de kilomètres de sa famille. Perdu, le petit garçon doit apprendre à survivre seul dans l’immense ville de Calcutta.');
+        $film->setPressNote(mt_rand(1, 10));
+        $film->setPublicNote(mt_rand(1, 10));
+        $film->setNovelty(true);
+        $film->setLienBa('http://www.allocine.fr/_video/iblogvision.aspx?cmedia=19567433');
+        $film->setCritical('Voyez ce jeu exquis wallon, de graphie en kit mais bref. Portez ce vieux whisky au juge blond qui fume sur son ?le int?rieure, ? c?t? de l\'alc?ve ovo?de, o? les b?ches se consument dans l\'?tre, ce qui lui permet de penser ? la c?nogen?se de l\'?tre dont il est question dans la cause ambigu? entendue ? Mo?, dans un capharna?m qui, pense-t-il, diminue ?? et l? la qualit? de son ?uvre. Prouvez, beau juge, que le fameux sandwich au yak tue. L\'?le exigu?, O? l\'ob?se jury m?r F?te l\'ha? volap?k, ?ne ex ?quo au whist, ?tez ce v?u d??u. Vieux pelage que je modifie : breitschwanz ou yak ? D?s No?l o? un z?phyr ha? me v?t de gla?ons w?rmiens, je d?ne d?exquis r?tis de b?uf au kir ? l?a? d??ge m?r & c?tera ! Fougueux, j\'enivre la squaw au pack de beau zythum. Ketch, yawl, jonque flambant neuve? jugez des prix ! Voyez le brick g?ant que j\'examine pr?s du wharf. Portez ce vieux whisky au juge blond qui fume. B?chez la queue du wagon-taxi avec les pyjamas du fakir. Voix ambigu? d\'un c?ur qui, au z?phyr, pr?f?re les jattes de kiwis. Mon pauvre z?bu ankylos?');
+        $film->setActors([$this->getReference('actor'.mt_rand(1, 10)),$this->getReference('actor'.mt_rand(11, 20)),$this->getReference('actor'.mt_rand(21, 30))]);
+        $film->setDirectors([$this->getReference('director'.mt_rand(1, 15))]);
+        $film->setPublicAge($this->getReference(mt_rand(1, 7)));
+        $film->setTypes([$this->getReference('Drama')]);
+        $film->setYearOfProduction($this->getReference('2017'));
+        $manager->persist($film);
+        $this->addReference('filme '.$i,$film);
+        $i ++;
+
+        $film = new Films();
+        $film->setTitle('Le Parrain');
+        $film->setOriginalTitle('The Godfather');
+        $film->setRelaseDate(new \DateTime('1972-03-15'));
+        $film->setDuration('2H55');
+        $film->setPicture($this->getReference('picture' . $i));
+        $film->setSynopsie('En 1945, à New York, les Corleone sont une des cinq familles de la mafia. Don Vito Corleone marie sa fille à un bookmaker. Sollozzo, "parrain" de la famille Tattaglia, propose à Don Vito une association dans le trafic de drogue...');
+        $film->setPressNote(mt_rand(1, 10));
+        $film->setPublicNote(mt_rand(1, 10));
+        $film->setNovelty(false);
+        $film->setLienBa('http://www.allocine.fr/_video/iblogvision.aspx?cmedia=19414100');
+        $film->setCritical('Voyez ce jeu exquis wallon, de graphie en kit mais bref. Portez ce vieux whisky au juge blond qui fume sur son ?le int?rieure, ? c?t? de l\'alc?ve ovo?de, o? les b?ches se consument dans l\'?tre, ce qui lui permet de penser ? la c?nogen?se de l\'?tre dont il est question dans la cause ambigu? entendue ? Mo?, dans un capharna?m qui, pense-t-il, diminue ?? et l? la qualit? de son ?uvre. Prouvez, beau juge, que le fameux sandwich au yak tue. L\'?le exigu?, O? l\'ob?se jury m?r F?te l\'ha? volap?k, ?ne ex ?quo au whist, ?tez ce v?u d??u. Vieux pelage que je modifie : breitschwanz ou yak ? D?s No?l o? un z?phyr ha? me v?t de gla?ons w?rmiens, je d?ne d?exquis r?tis de b?uf au kir ? l?a? d??ge m?r & c?tera ! Fougueux, j\'enivre la squaw au pack de beau zythum. Ketch, yawl, jonque flambant neuve? jugez des prix ! Voyez le brick g?ant que j\'examine pr?s du wharf. Portez ce vieux whisky au juge blond qui fume. B?chez la queue du wagon-taxi avec les pyjamas du fakir. Voix ambigu? d\'un c?ur qui, au z?phyr, pr?f?re les jattes de kiwis. Mon pauvre z?bu ankylos?');
+        $film->setActors([$this->getReference('actor'.mt_rand(1, 10)),$this->getReference('actor'.mt_rand(11, 20)),$this->getReference('actor'.mt_rand(21, 30))]);
+        $film->setDirectors([$this->getReference('director'.mt_rand(1, 15))]);
+        $film->setPublicAge($this->getReference(mt_rand(1, 7)));
+        $film->setTypes([$this->getReference('Drama'), $this->getReference('Polic')]);
+        $film->setYearOfProduction($this->getReference('1995'));
+        $manager->persist($film);
+        $this->addReference('filme '.$i,$film);
+        $i ++;
+
+        $film = new Films();
+        $film->setTitle('Django Unchained');
+        $film->setOriginalTitle('Django Unchained');
+        $film->setRelaseDate(new \DateTime('2013-01-16'));
+        $film->setDuration('2H44');
+        $film->setPicture($this->getReference('picture' . $i));
+        $film->setSynopsie('Le parcours d\'un chasseur de prime allemand et d\'un homme noir pour retrouver la femme 
+        de ce dernier retenue en esclavage par le propriétaire d\'une plantation...');
+        $film->setPressNote(mt_rand(1, 10));
+        $film->setPublicNote(mt_rand(1, 10));
+        $film->setNovelty(false);
+        $film->setLienBa('http://www.allocine.fr/_video/iblogvision.aspx?cmedia=19353314');
+        $film->setCritical('Voyez ce jeu exquis wallon, de graphie en kit mais bref. Portez ce vieux whisky au juge blond qui fume sur son ?le int?rieure, ? c?t? de l\'alc?ve ovo?de, o? les b?ches se consument dans l\'?tre, ce qui lui permet de penser ? la c?nogen?se de l\'?tre dont il est question dans la cause ambigu? entendue ? Mo?, dans un capharna?m qui, pense-t-il, diminue ?? et l? la qualit? de son ?uvre. Prouvez, beau juge, que le fameux sandwich au yak tue. L\'?le exigu?, O? l\'ob?se jury m?r F?te l\'ha? volap?k, ?ne ex ?quo au whist, ?tez ce v?u d??u. Vieux pelage que je modifie : breitschwanz ou yak ? D?s No?l o? un z?phyr ha? me v?t de gla?ons w?rmiens, je d?ne d?exquis r?tis de b?uf au kir ? l?a? d??ge m?r & c?tera ! Fougueux, j\'enivre la squaw au pack de beau zythum. Ketch, yawl, jonque flambant neuve? jugez des prix ! Voyez le brick g?ant que j\'examine pr?s du wharf. Portez ce vieux whisky au juge blond qui fume. B?chez la queue du wagon-taxi avec les pyjamas du fakir. Voix ambigu? d\'un c?ur qui, au z?phyr, pr?f?re les jattes de kiwis. Mon pauvre z?bu ankylos?');
+        $film->setActors([$this->getReference('actor'.mt_rand(1, 10)),$this->getReference('actor'.mt_rand(11, 20)),$this->getReference('actor'.mt_rand(21, 30))]);
+        $film->setDirectors([$this->getReference('director'.mt_rand(1, 15)), $this->getReference('director'.mt_rand(1, 15))]);
+        $film->setPublicAge($this->getReference(mt_rand(1, 7)));
+        $film->setTypes([$this->getReference('West')]);
+        $film->setYearOfProduction($this->getReference('2013'));
+        $manager->persist($film);
+        $this->addReference('filme '.$i,$film);
+        $i ++;
+
+        $film = new Films();
+        $film->setTitle('Tu ne tueras point');
+        $film->setOriginalTitle('Hacksaw Ridge');
+        $film->setRelaseDate(new \DateTime('2016-11-09'));
+        $film->setDuration('2H20');
+        $film->setPicture($this->getReference('picture' . $i));
+        $film->setSynopsie('1945, alors que la guerre dans le Pacifique fait rage et que les forces américaines mènent l’une des batailles les plus acharnées du conflit sur l’île d’Okinawa, un soldat s’est distingué. Fidèle à ses convictions et armé de son seul courage, il a sauvé la vie de dizaines de soldats blessés.');
+        $film->setPressNote(mt_rand(1, 10));
+        $film->setPublicNote(mt_rand(1, 10));
+        $film->setNovelty(false);
+        $film->setLienBa('http://www.allocine.fr/_video/iblogvision.aspx?cmedia=19564298');
+        $film->setCritical('Voyez ce jeu exquis wallon, de graphie en kit mais bref. Portez ce vieux whisky au juge blond qui fume sur son ?le int?rieure, ? c?t? de l\'alc?ve ovo?de, o? les b?ches se consument dans l\'?tre, ce qui lui permet de penser ? la c?nogen?se de l\'?tre dont il est question dans la cause ambigu? entendue ? Mo?, dans un capharna?m qui, pense-t-il, diminue ?? et l? la qualit? de son ?uvre. Prouvez, beau juge, que le fameux sandwich au yak tue. L\'?le exigu?, O? l\'ob?se jury m?r F?te l\'ha? volap?k, ?ne ex ?quo au whist, ?tez ce v?u d??u. Vieux pelage que je modifie : breitschwanz ou yak ? D?s No?l o? un z?phyr ha? me v?t de gla?ons w?rmiens, je d?ne d?exquis r?tis de b?uf au kir ? l?a? d??ge m?r & c?tera ! Fougueux, j\'enivre la squaw au pack de beau zythum. Ketch, yawl, jonque flambant neuve? jugez des prix ! Voyez le brick g?ant que j\'examine pr?s du wharf. Portez ce vieux whisky au juge blond qui fume. B?chez la queue du wagon-taxi avec les pyjamas du fakir. Voix ambigu? d\'un c?ur qui, au z?phyr, pr?f?re les jattes de kiwis. Mon pauvre z?bu ankylos?');
+        $film->setActors([$this->getReference('actor'.mt_rand(1, 10)),$this->getReference('actor'.mt_rand(11, 20)),$this->getReference('actor'.mt_rand(21, 30))]);
+        $film->setDirectors([$this->getReference('director'.mt_rand(1, 15))]);
+        $film->setPublicAge($this->getReference(mt_rand(1, 7)));
+        $film->setTypes([$this->getReference('Drama'), $this->getReference('Guerre')]);
+        $film->setYearOfProduction($this->getReference('2016'));
+        $manager->persist($film);
+        $this->addReference('filme '.$i,$film);
+        $i ++;
+
+        $film = new Films();
+        $film->setTitle('The Dark Knight, Le Chevalier Noir');
+        $film->setOriginalTitle('The Dark Knight, Le Chevalier Noir');
+        $film->setRelaseDate(new \DateTime('2008-07-13'));
+        $film->setDuration('2H27');
+        $film->setPicture($this->getReference('picture' . $i));
+        $film->setSynopsie('Batman entreprend de démanteler les dernières organisations criminelles de Gotham. Mais il se heurte bientôt à un nouveau génie du crime qui répand la terreur et le chaos dans la ville : le Joker...');
+        $film->setPressNote(mt_rand(1, 10));
+        $film->setPublicNote(mt_rand(1, 10));
+        $film->setNovelty(false);
+        $film->setLienBa('http://www.allocine.fr/_video/iblogvision.aspx?cmedia=18785651');
+        $film->setCritical('Voyez ce jeu exquis wallon, de graphie en kit mais bref. Portez ce vieux whisky au juge blond qui fume sur son ?le int?rieure, ? c?t? de l\'alc?ve ovo?de, o? les b?ches se consument dans l\'?tre, ce qui lui permet de penser ? la c?nogen?se de l\'?tre dont il est question dans la cause ambigu? entendue ? Mo?, dans un capharna?m qui, pense-t-il, diminue ?? et l? la qualit? de son ?uvre. Prouvez, beau juge, que le fameux sandwich au yak tue. L\'?le exigu?, O? l\'ob?se jury m?r F?te l\'ha? volap?k, ?ne ex ?quo au whist, ?tez ce v?u d??u. Vieux pelage que je modifie : breitschwanz ou yak ? D?s No?l o? un z?phyr ha? me v?t de gla?ons w?rmiens, je d?ne d?exquis r?tis de b?uf au kir ? l?a? d??ge m?r & c?tera ! Fougueux, j\'enivre la squaw au pack de beau zythum. Ketch, yawl, jonque flambant neuve? jugez des prix ! Voyez le brick g?ant que j\'examine pr?s du wharf. Portez ce vieux whisky au juge blond qui fume. B?chez la queue du wagon-taxi avec les pyjamas du fakir. Voix ambigu? d\'un c?ur qui, au z?phyr, pr?f?re les jattes de kiwis. Mon pauvre z?bu ankylos?');
+        $film->setActors([$this->getReference('actor'.mt_rand(1, 10)),$this->getReference('actor'.mt_rand(11, 20)),$this->getReference('actor'.mt_rand(21, 30))]);
+        $film->setDirectors([$this->getReference('director'.mt_rand(1, 15))]);
+        $film->setPublicAge($this->getReference(mt_rand(1, 7)));
+        $film->setTypes([$this->getReference('Action'), $this->getReference('Drama')]);
+        $film->setYearOfProduction($this->getReference('2008'));
+        $manager->persist($film);
+        $this->addReference('filme '.$i,$film);
+        $i ++;
+
+        $film = new Films();
+        $film->setTitle('Gran Torino');
+        $film->setOriginalTitle('Gran Torino');
+        $film->setRelaseDate(new \DateTime('2009-02-25'));
+        $film->setDuration('1H51');
+        $film->setPicture($this->getReference('picture' . $i));
+        $film->setSynopsie('Walt Kowalski est un ancien de la guerre de Corée, un homme inflexible, amer et pétri de préjugés surannés. Hormis sa chienne Daisy, il ne fait confiance qu\'à son M-1, toujours propre, toujours prêt à l\'usage...');
+        $film->setPressNote(mt_rand(1, 10));
+        $film->setPublicNote(mt_rand(1, 10));
+        $film->setNovelty(false);
+        $film->setLienBa('http://www.allocine.fr/_video/iblogvision.aspx?cmedia=18857742');
+        $film->setCritical('Voyez ce jeu exquis wallon, de graphie en kit mais bref. Portez ce vieux whisky au juge blond qui fume sur son ?le int?rieure, ? c?t? de l\'alc?ve ovo?de, o? les b?ches se consument dans l\'?tre, ce qui lui permet de penser ? la c?nogen?se de l\'?tre dont il est question dans la cause ambigu? entendue ? Mo?, dans un capharna?m qui, pense-t-il, diminue ?? et l? la qualit? de son ?uvre. Prouvez, beau juge, que le fameux sandwich au yak tue. L\'?le exigu?, O? l\'ob?se jury m?r F?te l\'ha? volap?k, ?ne ex ?quo au whist, ?tez ce v?u d??u. Vieux pelage que je modifie : breitschwanz ou yak ? D?s No?l o? un z?phyr ha? me v?t de gla?ons w?rmiens, je d?ne d?exquis r?tis de b?uf au kir ? l?a? d??ge m?r & c?tera ! Fougueux, j\'enivre la squaw au pack de beau zythum. Ketch, yawl, jonque flambant neuve? jugez des prix ! Voyez le brick g?ant que j\'examine pr?s du wharf. Portez ce vieux whisky au juge blond qui fume. B?chez la queue du wagon-taxi avec les pyjamas du fakir. Voix ambigu? d\'un c?ur qui, au z?phyr, pr?f?re les jattes de kiwis. Mon pauvre z?bu ankylos?');
+        $film->setActors([$this->getReference('actor'.mt_rand(1, 10)),$this->getReference('actor'.mt_rand(11, 20)),$this->getReference('actor'.mt_rand(21, 30))]);
+        $film->setDirectors([$this->getReference('director'.mt_rand(1, 15))]);
+        $film->setPublicAge($this->getReference(mt_rand(1, 7)));
+        $film->setTypes([$this->getReference('Thriller'), $this->getReference('Drama')]);
+        $film->setYearOfProduction($this->getReference('2009'));
+        $manager->persist($film);
+        $this->addReference('filme '.$i,$film);
+        $i ++;
+
+        $film = new Films();
+        $film->setTitle('Le Seigneur des anneaux : le retour du roi');
+        $film->setOriginalTitle('The Lord of the Rings: The Return of the King');
+        $film->setRelaseDate(new \DateTime('2003-12-17'));
+        $film->setDuration('3H21');
+        $film->setPicture($this->getReference('picture' . $i));
+        $film->setSynopsie('Tandis que les ténèbres se répandent sur la Terre du Milieu, Aragorn se révèle être l\'héritier caché des rois antiques. Quant à Frodon, toujours tenté par l\'Anneau, il voyage à travers les contrées ennemies, se reposant sur Sam et Gollum...');
+        $film->setPressNote(mt_rand(1, 10));
+        $film->setPublicNote(mt_rand(1, 10));
+        $film->setNovelty(false);
+        $film->setLienBa('http://www.allocine.fr/_video/iblogvision.aspx?cmedia=19448603');
+        $film->setCritical('Voyez ce jeu exquis wallon, de graphie en kit mais bref. Portez ce vieux whisky au juge blond qui fume sur son ?le int?rieure, ? c?t? de l\'alc?ve ovo?de, o? les b?ches se consument dans l\'?tre, ce qui lui permet de penser ? la c?nogen?se de l\'?tre dont il est question dans la cause ambigu? entendue ? Mo?, dans un capharna?m qui, pense-t-il, diminue ?? et l? la qualit? de son ?uvre. Prouvez, beau juge, que le fameux sandwich au yak tue. L\'?le exigu?, O? l\'ob?se jury m?r F?te l\'ha? volap?k, ?ne ex ?quo au whist, ?tez ce v?u d??u. Vieux pelage que je modifie : breitschwanz ou yak ? D?s No?l o? un z?phyr ha? me v?t de gla?ons w?rmiens, je d?ne d?exquis r?tis de b?uf au kir ? l?a? d??ge m?r & c?tera ! Fougueux, j\'enivre la squaw au pack de beau zythum. Ketch, yawl, jonque flambant neuve? jugez des prix ! Voyez le brick g?ant que j\'examine pr?s du wharf. Portez ce vieux whisky au juge blond qui fume. B?chez la queue du wagon-taxi avec les pyjamas du fakir. Voix ambigu? d\'un c?ur qui, au z?phyr, pr?f?re les jattes de kiwis. Mon pauvre z?bu ankylos?');
+        $film->setActors([$this->getReference('actor'.mt_rand(1, 10)),$this->getReference('actor'.mt_rand(11, 20)),$this->getReference('actor'.mt_rand(21, 30))]);
+        $film->setDirectors([$this->getReference('director'.mt_rand(1, 15))]);
+        $film->setPublicAge($this->getReference(mt_rand(1, 7)));
+        $film->setTypes([$this->getReference('Fanta'), $this->getReference('Avent')]);
+        $film->setYearOfProduction($this->getReference('2003'));
+        $manager->persist($film);
+        $this->addReference('filme '.$i,$film);
+        $i ++;
+
+        $film = new Films();
+        $film->setTitle('Pulp Fiction');
+        $film->setOriginalTitle('Pulp Fiction');
+        $film->setRelaseDate(new \DateTime('1994-10-26'));
+        $film->setDuration('2H29');
+        $film->setPicture($this->getReference('picture' . $i));
+        $film->setSynopsie('L\'odyssée sanglante et burlesque de petits malfrats dans la jungle de Hollywood à travers trois histoires qui s\'entremêlent.');
+        $film->setPressNote(mt_rand(1, 10));
+        $film->setPublicNote(mt_rand(1, 10));
+        $film->setNovelty(false);
+        $film->setLienBa('http://www.allocine.fr/_video/iblogvision.aspx?cmedia=18740286');
+        $film->setCritical('Voyez ce jeu exquis wallon, de graphie en kit mais bref. Portez ce vieux whisky au juge blond qui fume sur son ?le int?rieure, ? c?t? de l\'alc?ve ovo?de, o? les b?ches se consument dans l\'?tre, ce qui lui permet de penser ? la c?nogen?se de l\'?tre dont il est question dans la cause ambigu? entendue ? Mo?, dans un capharna?m qui, pense-t-il, diminue ?? et l? la qualit? de son ?uvre. Prouvez, beau juge, que le fameux sandwich au yak tue. L\'?le exigu?, O? l\'ob?se jury m?r F?te l\'ha? volap?k, ?ne ex ?quo au whist, ?tez ce v?u d??u. Vieux pelage que je modifie : breitschwanz ou yak ? D?s No?l o? un z?phyr ha? me v?t de gla?ons w?rmiens, je d?ne d?exquis r?tis de b?uf au kir ? l?a? d??ge m?r & c?tera ! Fougueux, j\'enivre la squaw au pack de beau zythum. Ketch, yawl, jonque flambant neuve? jugez des prix ! Voyez le brick g?ant que j\'examine pr?s du wharf. Portez ce vieux whisky au juge blond qui fume. B?chez la queue du wagon-taxi avec les pyjamas du fakir. Voix ambigu? d\'un c?ur qui, au z?phyr, pr?f?re les jattes de kiwis. Mon pauvre z?bu ankylos?');
+        $film->setActors([$this->getReference('actor'.mt_rand(1, 10)),$this->getReference('actor'.mt_rand(11, 20)),$this->getReference('actor'.mt_rand(21, 30))]);
+        $film->setDirectors([$this->getReference('director'.mt_rand(1, 15))]);
+        $film->setPublicAge($this->getReference(mt_rand(1, 7)));
+        $film->setTypes([$this->getReference('Polic'), $this->getReference('Thriller')]);
+        $film->setYearOfProduction($this->getReference('1994'));
+        $manager->persist($film);
+        $this->addReference('filme '.$i,$film);
+        $i ++;
+
+        $film = new Films();
+        $film->setTitle('Les Evadés');
+        $film->setOriginalTitle('The Shawshank Redemption');
+        $film->setRelaseDate(new \DateTime('1995-03-01'));
+        $film->setDuration('2H20');
+        $film->setPicture($this->getReference('picture' . $i));
+        $film->setSynopsie('L\'amitié d\'un jeune banquier condamné à la prison à vie pour le meurtre de sa femme et d\'un vétéran de la prison de Shawshank, le pénitencier le plus sévère de l\'Etat du Maine');
+        $film->setPressNote(mt_rand(1, 10));
+        $film->setPublicNote(mt_rand(1, 10));
+        $film->setNovelty(false);
+        $film->setLienBa('http://www.allocine.fr/_video/iblogvision.aspx?cmedia=19376413');
+        $film->setCritical('Voyez ce jeu exquis wallon, de graphie en kit mais bref. Portez ce vieux whisky au juge blond qui fume sur son ?le int?rieure, ? c?t? de l\'alc?ve ovo?de, o? les b?ches se consument dans l\'?tre, ce qui lui permet de penser ? la c?nogen?se de l\'?tre dont il est question dans la cause ambigu? entendue ? Mo?, dans un capharna?m qui, pense-t-il, diminue ?? et l? la qualit? de son ?uvre. Prouvez, beau juge, que le fameux sandwich au yak tue. L\'?le exigu?, O? l\'ob?se jury m?r F?te l\'ha? volap?k, ?ne ex ?quo au whist, ?tez ce v?u d??u. Vieux pelage que je modifie : breitschwanz ou yak ? D?s No?l o? un z?phyr ha? me v?t de gla?ons w?rmiens, je d?ne d?exquis r?tis de b?uf au kir ? l?a? d??ge m?r & c?tera ! Fougueux, j\'enivre la squaw au pack de beau zythum. Ketch, yawl, jonque flambant neuve? jugez des prix ! Voyez le brick g?ant que j\'examine pr?s du wharf. Portez ce vieux whisky au juge blond qui fume. B?chez la queue du wagon-taxi avec les pyjamas du fakir. Voix ambigu? d\'un c?ur qui, au z?phyr, pr?f?re les jattes de kiwis. Mon pauvre z?bu ankylos?');
+        $film->setActors([$this->getReference('actor'.mt_rand(1, 10)),$this->getReference('actor'.mt_rand(11, 20)),$this->getReference('actor'.mt_rand(21, 30))]);
+        $film->setDirectors([$this->getReference('director'.mt_rand(1, 15))]);
+        $film->setPublicAge($this->getReference(mt_rand(1, 7)));
+        $film->setTypes([$this->getReference('Drama')]);
+        $film->setYearOfProduction($this->getReference('1995'));
+        $manager->persist($film);
+        $this->addReference('filme '.$i,$film);
+        $i ++;
+
+        $film = new Films();
+        $film->setTitle('Le Seigneur des anneaux : la communauté de l\'anneau');
+        $film->setOriginalTitle('The Lord of the Rings: The Fellowship of the Ring');
+        $film->setRelaseDate(new \DateTime('2001-12-19'));
+        $film->setDuration('2H58');
+        $film->setPicture($this->getReference('picture' . $i));
+        $film->setSynopsie('Frodon le Hobbit hérite de l\'Anneau Unique, un instrument de pouvoir absolu qui permettrait à Sauron, le Seigneur des ténèbres, de régner sur la Terre du Milieu. Commence alors un vaste périple visant à la destruction de l\'objet');
+        $film->setPressNote(mt_rand(1, 10));
+        $film->setPublicNote(mt_rand(1, 10));
+        $film->setNovelty(false);
+        $film->setLienBa('http://www.allocine.fr/_video/iblogvision.aspx?cmedia=19448550');
+        $film->setCritical('Voyez ce jeu exquis wallon, de graphie en kit mais bref. Portez ce vieux whisky au juge blond qui fume sur son ?le int?rieure, ? c?t? de l\'alc?ve ovo?de, o? les b?ches se consument dans l\'?tre, ce qui lui permet de penser ? la c?nogen?se de l\'?tre dont il est question dans la cause ambigu? entendue ? Mo?, dans un capharna?m qui, pense-t-il, diminue ?? et l? la qualit? de son ?uvre. Prouvez, beau juge, que le fameux sandwich au yak tue. L\'?le exigu?, O? l\'ob?se jury m?r F?te l\'ha? volap?k, ?ne ex ?quo au whist, ?tez ce v?u d??u. Vieux pelage que je modifie : breitschwanz ou yak ? D?s No?l o? un z?phyr ha? me v?t de gla?ons w?rmiens, je d?ne d?exquis r?tis de b?uf au kir ? l?a? d??ge m?r & c?tera ! Fougueux, j\'enivre la squaw au pack de beau zythum. Ketch, yawl, jonque flambant neuve? jugez des prix ! Voyez le brick g?ant que j\'examine pr?s du wharf. Portez ce vieux whisky au juge blond qui fume. B?chez la queue du wagon-taxi avec les pyjamas du fakir. Voix ambigu? d\'un c?ur qui, au z?phyr, pr?f?re les jattes de kiwis. Mon pauvre z?bu ankylos?');
+        $film->setActors([$this->getReference('actor'.mt_rand(1, 10)),$this->getReference('actor'.mt_rand(11, 20)),$this->getReference('actor'.mt_rand(21, 30))]);
+        $film->setDirectors([$this->getReference('director'.mt_rand(1, 15))]);
+        $film->setPublicAge($this->getReference(mt_rand(1, 7)));
+        $film->setTypes([$this->getReference('Fanta'), $this->getReference('Avent')]);
+        $film->setYearOfProduction($this->getReference('2001'));
+        $manager->persist($film);
+        $this->addReference('filme '.$i,$film);
+        $i ++;
+
+        $film = new Films();
+        $film->setTitle('Fight Club');
+        $film->setOriginalTitle('Fight Club');
+        $film->setRelaseDate(new \DateTime('1999-12-10'));
+        $film->setDuration('2H19');
+        $film->setPicture($this->getReference('picture' . $i));
+        $film->setSynopsie('Le narrateur, vit seul, travaille seul, dort seul, comme beaucoup d\'autres personnes seules qui connaissent la misère morale et sexuelle. C\'est pourquoi il va devenir membre du Fight club, un lieu clandestin dirigé par Tyler Durden, anarchiste entre gourou et philosophe.');
+        $film->setPressNote(mt_rand(1, 10));
+        $film->setPublicNote(mt_rand(1, 10));
+        $film->setNovelty(false);
+        $film->setLienBa('http://www.allocine.fr/_video/iblogvision.aspx?cmedia=19441802');
+        $film->setCritical('Voyez ce jeu exquis wallon, de graphie en kit mais bref. Portez ce vieux whisky au juge blond qui fume sur son ?le int?rieure, ? c?t? de l\'alc?ve ovo?de, o? les b?ches se consument dans l\'?tre, ce qui lui permet de penser ? la c?nogen?se de l\'?tre dont il est question dans la cause ambigu? entendue ? Mo?, dans un capharna?m qui, pense-t-il, diminue ?? et l? la qualit? de son ?uvre. Prouvez, beau juge, que le fameux sandwich au yak tue. L\'?le exigu?, O? l\'ob?se jury m?r F?te l\'ha? volap?k, ?ne ex ?quo au whist, ?tez ce v?u d??u. Vieux pelage que je modifie : breitschwanz ou yak ? D?s No?l o? un z?phyr ha? me v?t de gla?ons w?rmiens, je d?ne d?exquis r?tis de b?uf au kir ? l?a? d??ge m?r & c?tera ! Fougueux, j\'enivre la squaw au pack de beau zythum. Ketch, yawl, jonque flambant neuve? jugez des prix ! Voyez le brick g?ant que j\'examine pr?s du wharf. Portez ce vieux whisky au juge blond qui fume. B?chez la queue du wagon-taxi avec les pyjamas du fakir. Voix ambigu? d\'un c?ur qui, au z?phyr, pr?f?re les jattes de kiwis. Mon pauvre z?bu ankylos?');
+        $film->setActors([$this->getReference('actor'.mt_rand(1, 10)),$this->getReference('actor'.mt_rand(11, 20)),$this->getReference('actor'.mt_rand(21, 30))]);
+        $film->setDirectors([$this->getReference('director'.mt_rand(1, 15))]);
+        $film->setPublicAge($this->getReference(mt_rand(1, 7)));
+        $film->setTypes([$this->getReference('Thriller'), $this->getReference('Drama')]);
+        $film->setYearOfProduction($this->getReference('1999'));
+        $manager->persist($film);
+        $this->addReference('filme '.$i,$film);
+        $i ++;
+
+        $film = new Films();
+        $film->setTitle('Le Roi Lion');
+        $film->setOriginalTitle('The Lion King');
+        $film->setRelaseDate(new \DateTime('1994-12-23'));
+        $film->setDuration('1H29');
+        $film->setPicture($this->getReference('picture' . $i));
+        $film->setSynopsie('Le long combat de Simba le lionceau pour accéder à son rang de roi des animaux, après que le fourbe Scar, son oncle, a tué son père et pris sa place');
+        $film->setPressNote(mt_rand(1, 10));
+        $film->setPublicNote(mt_rand(1, 10));
+        $film->setNovelty(false);
+        $film->setLienBa('http://www.allocine.fr/_video/iblogvision.aspx?cmedia=19299852');
+        $film->setCritical('Voyez ce jeu exquis wallon, de graphie en kit mais bref. Portez ce vieux whisky au juge blond qui fume sur son ?le int?rieure, ? c?t? de l\'alc?ve ovo?de, o? les b?ches se consument dans l\'?tre, ce qui lui permet de penser ? la c?nogen?se de l\'?tre dont il est question dans la cause ambigu? entendue ? Mo?, dans un capharna?m qui, pense-t-il, diminue ?? et l? la qualit? de son ?uvre. Prouvez, beau juge, que le fameux sandwich au yak tue. L\'?le exigu?, O? l\'ob?se jury m?r F?te l\'ha? volap?k, ?ne ex ?quo au whist, ?tez ce v?u d??u. Vieux pelage que je modifie : breitschwanz ou yak ? D?s No?l o? un z?phyr ha? me v?t de gla?ons w?rmiens, je d?ne d?exquis r?tis de b?uf au kir ? l?a? d??ge m?r & c?tera ! Fougueux, j\'enivre la squaw au pack de beau zythum. Ketch, yawl, jonque flambant neuve? jugez des prix ! Voyez le brick g?ant que j\'examine pr?s du wharf. Portez ce vieux whisky au juge blond qui fume. B?chez la queue du wagon-taxi avec les pyjamas du fakir. Voix ambigu? d\'un c?ur qui, au z?phyr, pr?f?re les jattes de kiwis. Mon pauvre z?bu ankylos?');
+        $film->setActors([$this->getReference('actor'.mt_rand(1, 10)),$this->getReference('actor'.mt_rand(11, 20)),$this->getReference('actor'.mt_rand(21, 30))]);
+        $film->setDirectors([$this->getReference('director'.mt_rand(1, 15)), $this->getReference('director'.mt_rand(1, 15))]);
+        $film->setPublicAge($this->getReference(mt_rand(1, 7)));
+        $film->setTypes([$this->getReference('Anim'), $this->getReference('Avent')]);
+        $film->setYearOfProduction($this->getReference('1994'));
+        $manager->persist($film);
+        $this->addReference('filme '.$i,$film);
+        $i ++;
+
+        $film = new Films();
+        $film->setTitle('The Greatest Showman');
+        $film->setOriginalTitle('The Greatest Showman');
+        $film->setRelaseDate(new \DateTime('2018-01-24'));
+        $film->setDuration('1H44');
+        $film->setPicture($this->getReference('picture' . $i));
+        $film->setSynopsie('L\’histoire de P.T Barnum, un visionnaire parti de rien pour créer un spectacle devenu un phénomène planétaire.');
+        $film->setPressNote(mt_rand(1, 10));
+        $film->setPublicNote(mt_rand(1, 10));
+        $film->setNovelty(true);
+        $film->setLienBa('http://www.allocine.fr/_video/iblogvision.aspx?cmedia=19575233');
+        $film->setCritical('Voyez ce jeu exquis wallon, de graphie en kit mais bref. Portez ce vieux whisky au juge blond qui fume sur son ?le int?rieure, ? c?t? de l\'alc?ve ovo?de, o? les b?ches se consument dans l\'?tre, ce qui lui permet de penser ? la c?nogen?se de l\'?tre dont il est question dans la cause ambigu? entendue ? Mo?, dans un capharna?m qui, pense-t-il, diminue ?? et l? la qualit? de son ?uvre. Prouvez, beau juge, que le fameux sandwich au yak tue. L\'?le exigu?, O? l\'ob?se jury m?r F?te l\'ha? volap?k, ?ne ex ?quo au whist, ?tez ce v?u d??u. Vieux pelage que je modifie : breitschwanz ou yak ? D?s No?l o? un z?phyr ha? me v?t de gla?ons w?rmiens, je d?ne d?exquis r?tis de b?uf au kir ? l?a? d??ge m?r & c?tera ! Fougueux, j\'enivre la squaw au pack de beau zythum. Ketch, yawl, jonque flambant neuve? jugez des prix ! Voyez le brick g?ant que j\'examine pr?s du wharf. Portez ce vieux whisky au juge blond qui fume. B?chez la queue du wagon-taxi avec les pyjamas du fakir. Voix ambigu? d\'un c?ur qui, au z?phyr, pr?f?re les jattes de kiwis. Mon pauvre z?bu ankylos?');
+        $film->setActors([$this->getReference('actor'.mt_rand(1, 10)),$this->getReference('actor'.mt_rand(11, 20)),$this->getReference('actor'.mt_rand(21, 30))]);
+        $film->setDirectors([$this->getReference('director'.mt_rand(1, 15))]);
+        $film->setPublicAge($this->getReference(mt_rand(1, 7)));
+        $film->setTypes([$this->getReference('Drama'), $this->getReference('Romance')]);
+        $film->setYearOfProduction($this->getReference('2018'));
+        $manager->persist($film);
+        $this->addReference('filme '.$i,$film);
+        $i ++;
+
+        $film = new Films();
+        $film->setTitle('Le Seigneur des anneaux : les deux tours');
+        $film->setOriginalTitle('The Lord of the Rings: The Two Towers');
+        $film->setRelaseDate(new \DateTime('2002-12-18'));
+        $film->setDuration('2H59');
+        $film->setPicture($this->getReference('picture' . $i));
+        $film->setSynopsie('Frodon Sacquet, le Hobbit, doit braver de terribles dangers pour tenter de détruire l\'Anneau Unique, convoité par Sauron, le Seigneur des ténèbres. De leur côté, Gimli, Legolas et Aragorn doivent sauver Pippin et Merry, capturés par les Orques.');
+        $film->setPressNote(mt_rand(1, 10));
+        $film->setPublicNote(mt_rand(1, 10));
+        $film->setNovelty(false);
+        $film->setLienBa('http://www.allocine.fr/_video/iblogvision.aspx?cmedia=19448598');
+        $film->setCritical('Voyez ce jeu exquis wallon, de graphie en kit mais bref. Portez ce vieux whisky au juge blond qui fume sur son ?le int?rieure, ? c?t? de l\'alc?ve ovo?de, o? les b?ches se consument dans l\'?tre, ce qui lui permet de penser ? la c?nogen?se de l\'?tre dont il est question dans la cause ambigu? entendue ? Mo?, dans un capharna?m qui, pense-t-il, diminue ?? et l? la qualit? de son ?uvre. Prouvez, beau juge, que le fameux sandwich au yak tue. L\'?le exigu?, O? l\'ob?se jury m?r F?te l\'ha? volap?k, ?ne ex ?quo au whist, ?tez ce v?u d??u. Vieux pelage que je modifie : breitschwanz ou yak ? D?s No?l o? un z?phyr ha? me v?t de gla?ons w?rmiens, je d?ne d?exquis r?tis de b?uf au kir ? l?a? d??ge m?r & c?tera ! Fougueux, j\'enivre la squaw au pack de beau zythum. Ketch, yawl, jonque flambant neuve? jugez des prix ! Voyez le brick g?ant que j\'examine pr?s du wharf. Portez ce vieux whisky au juge blond qui fume. B?chez la queue du wagon-taxi avec les pyjamas du fakir. Voix ambigu? d\'un c?ur qui, au z?phyr, pr?f?re les jattes de kiwis. Mon pauvre z?bu ankylos?');
+        $film->setActors([$this->getReference('actor'.mt_rand(1, 10)),$this->getReference('actor'.mt_rand(11, 20)),$this->getReference('actor'.mt_rand(21, 30))]);
+        $film->setDirectors([$this->getReference('director'.mt_rand(1, 15))]);
+        $film->setPublicAge($this->getReference(mt_rand(1, 7)));
+        $film->setTypes([$this->getReference('Fanta'), $this->getReference('Avent')]);
+        $film->setYearOfProduction($this->getReference('2002'));
+        $manager->persist($film);
+        $this->addReference('filme '.$i,$film);
+        $i ++;
+
+        $film = new Films();
+        $film->setTitle('Vol au-dessus d\'un nid de coucou');
+        $film->setOriginalTitle('One Flew Over the Cuckoo\'s Nest');
+        $film->setRelaseDate(new \DateTime('1976-03-01'));
+        $film->setDuration('2H09');
+        $film->setPicture($this->getReference('picture' . $i));
+        $film->setSynopsie('Rebellion dans un hôpital psychiatrique à l\'instigation d\'un malade qui se révolte contre la dureté d\'une infirmière.');
+        $film->setPressNote(mt_rand(1, 10));
+        $film->setPublicNote(mt_rand(1, 10));
+        $film->setNovelty(false);
+        $film->setLienBa('http://www.allocine.fr/_video/iblogvision.aspx?cmedia=19450310');
+        $film->setCritical('Voyez ce jeu exquis wallon, de graphie en kit mais bref. Portez ce vieux whisky au juge blond qui fume sur son ?le int?rieure, ? c?t? de l\'alc?ve ovo?de, o? les b?ches se consument dans l\'?tre, ce qui lui permet de penser ? la c?nogen?se de l\'?tre dont il est question dans la cause ambigu? entendue ? Mo?, dans un capharna?m qui, pense-t-il, diminue ?? et l? la qualit? de son ?uvre. Prouvez, beau juge, que le fameux sandwich au yak tue. L\'?le exigu?, O? l\'ob?se jury m?r F?te l\'ha? volap?k, ?ne ex ?quo au whist, ?tez ce v?u d??u. Vieux pelage que je modifie : breitschwanz ou yak ? D?s No?l o? un z?phyr ha? me v?t de gla?ons w?rmiens, je d?ne d?exquis r?tis de b?uf au kir ? l?a? d??ge m?r & c?tera ! Fougueux, j\'enivre la squaw au pack de beau zythum. Ketch, yawl, jonque flambant neuve? jugez des prix ! Voyez le brick g?ant que j\'examine pr?s du wharf. Portez ce vieux whisky au juge blond qui fume. B?chez la queue du wagon-taxi avec les pyjamas du fakir. Voix ambigu? d\'un c?ur qui, au z?phyr, pr?f?re les jattes de kiwis. Mon pauvre z?bu ankylos?');
+        $film->setActors([$this->getReference('actor'.mt_rand(1, 10)),$this->getReference('actor'.mt_rand(11, 20)),$this->getReference('actor'.mt_rand(21, 30))]);
+        $film->setDirectors([$this->getReference('director'.mt_rand(1, 15))]);
+        $film->setPublicAge($this->getReference(mt_rand(1, 7)));
+        $film->setTypes([$this->getReference('Drama')]);
+        $film->setYearOfProduction($this->getReference('1995'));
+        $manager->persist($film);
+        $this->addReference('filme '.$i,$film);
+        $i ++;
+
+        $film = new Films();
+        $film->setTitle('Les Enfants Loups, Ame & Yuki');
+        $film->setOriginalTitle('Okami kodomo no ame to yuki');
+        $film->setRelaseDate(new \DateTime('2012-08-29'));
+        $film->setDuration('1H57');
+        $film->setPicture($this->getReference('picture' . $i));
+        $film->setSynopsie('Hana et ses deux enfants, Ame et Yuki, vivent discrètement dans un coin tranquille de la ville. Leur vie est simple et joyeuse, mais ils cachent un secret : leur père est un homme-loup. Quand celui-ci disparaît brutalement, Hana décide de quitter la ville pour élever ses enfants...*');
+        $film->setPressNote(mt_rand(1, 10));
+        $film->setPublicNote(mt_rand(1, 10));
+        $film->setNovelty(false);
+        $film->setLienBa('http://www.allocine.fr/_video/iblogvision.aspx?cmedia=19351522');
+        $film->setCritical('Voyez ce jeu exquis wallon, de graphie en kit mais bref. Portez ce vieux whisky au juge blond qui fume sur son ?le int?rieure, ? c?t? de l\'alc?ve ovo?de, o? les b?ches se consument dans l\'?tre, ce qui lui permet de penser ? la c?nogen?se de l\'?tre dont il est question dans la cause ambigu? entendue ? Mo?, dans un capharna?m qui, pense-t-il, diminue ?? et l? la qualit? de son ?uvre. Prouvez, beau juge, que le fameux sandwich au yak tue. L\'?le exigu?, O? l\'ob?se jury m?r F?te l\'ha? volap?k, ?ne ex ?quo au whist, ?tez ce v?u d??u. Vieux pelage que je modifie : breitschwanz ou yak ? D?s No?l o? un z?phyr ha? me v?t de gla?ons w?rmiens, je d?ne d?exquis r?tis de b?uf au kir ? l?a? d??ge m?r & c?tera ! Fougueux, j\'enivre la squaw au pack de beau zythum. Ketch, yawl, jonque flambant neuve? jugez des prix ! Voyez le brick g?ant que j\'examine pr?s du wharf. Portez ce vieux whisky au juge blond qui fume. B?chez la queue du wagon-taxi avec les pyjamas du fakir. Voix ambigu? d\'un c?ur qui, au z?phyr, pr?f?re les jattes de kiwis. Mon pauvre z?bu ankylos?');
+        $film->setActors([$this->getReference('actor'.mt_rand(1, 10)),$this->getReference('actor'.mt_rand(11, 20)),$this->getReference('actor'.mt_rand(21, 30))]);
+        $film->setDirectors([$this->getReference('director'.mt_rand(1, 15))]);
+        $film->setPublicAge($this->getReference(mt_rand(1, 7)));
+        $film->setTypes([$this->getReference('Anim'), $this->getReference('Fanta')]);
+        $film->setYearOfProduction($this->getReference('2012'));
+        $manager->persist($film);
+        $this->addReference('filme '.$i,$film);
+        $i ++;
+
+        $film = new Films();
+        $film->setTitle('Interstellar');
+        $film->setOriginalTitle('Interstellar');
+        $film->setRelaseDate(new \DateTime('2014-12-24'));
+        $film->setDuration('2H49');
+        $film->setPicture($this->getReference('picture' . $i));
+        $film->setSynopsie('Le film raconte les aventures d’un groupe d’explorateurs qui utilisent une faille récemment découverte dans l’espace-temps afin de repousser les limites humaines et partir à la conquête des distances astronomiques dans un voyage interstellaire. ');
+        $film->setPressNote(mt_rand(1, 10));
+        $film->setPublicNote(mt_rand(1, 10));
+        $film->setNovelty(false);
+        $film->setLienBa('http://www.allocine.fr/_video/iblogvision.aspx?cmedia=19548515');
+        $film->setCritical('Voyez ce jeu exquis wallon, de graphie en kit mais bref. Portez ce vieux whisky au juge blond qui fume sur son ?le int?rieure, ? c?t? de l\'alc?ve ovo?de, o? les b?ches se consument dans l\'?tre, ce qui lui permet de penser ? la c?nogen?se de l\'?tre dont il est question dans la cause ambigu? entendue ? Mo?, dans un capharna?m qui, pense-t-il, diminue ?? et l? la qualit? de son ?uvre. Prouvez, beau juge, que le fameux sandwich au yak tue. L\'?le exigu?, O? l\'ob?se jury m?r F?te l\'ha? volap?k, ?ne ex ?quo au whist, ?tez ce v?u d??u. Vieux pelage que je modifie : breitschwanz ou yak ? D?s No?l o? un z?phyr ha? me v?t de gla?ons w?rmiens, je d?ne d?exquis r?tis de b?uf au kir ? l?a? d??ge m?r & c?tera ! Fougueux, j\'enivre la squaw au pack de beau zythum. Ketch, yawl, jonque flambant neuve? jugez des prix ! Voyez le brick g?ant que j\'examine pr?s du wharf. Portez ce vieux whisky au juge blond qui fume. B?chez la queue du wagon-taxi avec les pyjamas du fakir. Voix ambigu? d\'un c?ur qui, au z?phyr, pr?f?re les jattes de kiwis. Mon pauvre z?bu ankylos?');
+        $film->setActors([$this->getReference('actor'.mt_rand(1, 10)),$this->getReference('actor'.mt_rand(11, 20)),$this->getReference('actor'.mt_rand(21, 30))]);
+        $film->setDirectors([$this->getReference('director'.mt_rand(1, 15))]);
+        $film->setPublicAge($this->getReference(mt_rand(1, 7)));
+        $film->setTypes([$this->getReference('SF'), $this->getReference('Avent')]);
+        $film->setYearOfProduction($this->getReference('2014'));
+        $manager->persist($film);
+        $this->addReference('filme '.$i,$film);
+        $i ++;
+
+        $film = new Films();
+        $film->setTitle('Au Revoir Là-haut');
+        $film->setOriginalTitle('Au Revoir Là-haut');
+        $film->setRelaseDate(new \DateTime('2017-10-25'));
+        $film->setDuration('1H57');
+        $film->setPicture($this->getReference('picture' . $i));
+        $film->setSynopsie('Novembre 1919. Deux rescapés des tranchées, l\'un dessinateur de génie, l\'autre modeste comptable, décident de monter une arnaque aux monuments aux morts. Dans la France des années folles, l\'entreprise va se révéler aussi dangereuse que spectaculaire..');
+        $film->setPressNote(mt_rand(1, 10));
+        $film->setPublicNote(mt_rand(1, 10));
+        $film->setNovelty(true);
+        $film->setLienBa('http://www.allocine.fr/_video/iblogvision.aspx?cmedia=19573528');
+        $film->setCritical('Voyez ce jeu exquis wallon, de graphie en kit mais bref. Portez ce vieux whisky au juge blond qui fume sur son ?le int?rieure, ? c?t? de l\'alc?ve ovo?de, o? les b?ches se consument dans l\'?tre, ce qui lui permet de penser ? la c?nogen?se de l\'?tre dont il est question dans la cause ambigu? entendue ? Mo?, dans un capharna?m qui, pense-t-il, diminue ?? et l? la qualit? de son ?uvre. Prouvez, beau juge, que le fameux sandwich au yak tue. L\'?le exigu?, O? l\'ob?se jury m?r F?te l\'ha? volap?k, ?ne ex ?quo au whist, ?tez ce v?u d??u. Vieux pelage que je modifie : breitschwanz ou yak ? D?s No?l o? un z?phyr ha? me v?t de gla?ons w?rmiens, je d?ne d?exquis r?tis de b?uf au kir ? l?a? d??ge m?r & c?tera ! Fougueux, j\'enivre la squaw au pack de beau zythum. Ketch, yawl, jonque flambant neuve? jugez des prix ! Voyez le brick g?ant que j\'examine pr?s du wharf. Portez ce vieux whisky au juge blond qui fume. B?chez la queue du wagon-taxi avec les pyjamas du fakir. Voix ambigu? d\'un c?ur qui, au z?phyr, pr?f?re les jattes de kiwis. Mon pauvre z?bu ankylos?');
+        $film->setActors([$this->getReference('actor'.mt_rand(1, 10)),$this->getReference('actor'.mt_rand(11, 20)),$this->getReference('actor'.mt_rand(21, 30))]);
+        $film->setDirectors([$this->getReference('director'.mt_rand(1, 15))]);
+        $film->setPublicAge($this->getReference(mt_rand(1, 7)));
+        $film->setTypes([$this->getReference('Drama'), $this->getReference('Come')]);
+        $film->setYearOfProduction($this->getReference('2017'));
+        $manager->persist($film);
+        $this->addReference('filme '.$i,$film);
+        $i ++;
+
+        $film = new Films();
+        $film->setTitle('La Ligne verte');
+        $film->setOriginalTitle(' The Green Mile');
+        $film->setRelaseDate(new \DateTime('2000-03-1'));
+        $film->setDuration('3H09');
+        $film->setPicture($this->getReference('picture' . $i));
+        $film->setSynopsie('Paul Edgecomb, Gardien-chef du pénitencier de Cold Mountain en 1935, était chargé de veiller au bon déroulement des exécutions capitales. Parmi les prisonniers se trouvait un colosse du nom de John Coffey...');
+        $film->setPressNote(mt_rand(1, 10));
+        $film->setPublicNote(mt_rand(1, 10));
+        $film->setNovelty(false);
+        $film->setLienBa('http://www.allocine.fr/_video/iblogvision.aspx?cmedia=18650717');
+        $film->setCritical('Voyez ce jeu exquis wallon, de graphie en kit mais bref. Portez ce vieux whisky au juge blond qui fume sur son ?le int?rieure, ? c?t? de l\'alc?ve ovo?de, o? les b?ches se consument dans l\'?tre, ce qui lui permet de penser ? la c?nogen?se de l\'?tre dont il est question dans la cause ambigu? entendue ? Mo?, dans un capharna?m qui, pense-t-il, diminue ?? et l? la qualit? de son ?uvre. Prouvez, beau juge, que le fameux sandwich au yak tue. L\'?le exigu?, O? l\'ob?se jury m?r F?te l\'ha? volap?k, ?ne ex ?quo au whist, ?tez ce v?u d??u. Vieux pelage que je modifie : breitschwanz ou yak ? D?s No?l o? un z?phyr ha? me v?t de gla?ons w?rmiens, je d?ne d?exquis r?tis de b?uf au kir ? l?a? d??ge m?r & c?tera ! Fougueux, j\'enivre la squaw au pack de beau zythum. Ketch, yawl, jonque flambant neuve? jugez des prix ! Voyez le brick g?ant que j\'examine pr?s du wharf. Portez ce vieux whisky au juge blond qui fume. B?chez la queue du wagon-taxi avec les pyjamas du fakir. Voix ambigu? d\'un c?ur qui, au z?phyr, pr?f?re les jattes de kiwis. Mon pauvre z?bu ankylos?');
+        $film->setActors([$this->getReference('actor'.mt_rand(1, 10)),$this->getReference('actor'.mt_rand(11, 20)),$this->getReference('actor'.mt_rand(21, 30))]);
+        $film->setDirectors([$this->getReference('director'.mt_rand(1, 15))]);
+        $film->setPublicAge($this->getReference(mt_rand(1, 7)));
+        $film->setTypes([$this->getReference('Fanta'), $this->getReference('Polic')]);
+        $film->setYearOfProduction($this->getReference('2000'));
+        $manager->persist($film);
+        $this->addReference('filme '.$i,$film);
+
+        $manager->flush();
+    }
+
+    public function getDependencies()
+    {
+        return array(
+            PublicAgeFixtures::class,
+            YearOfProductFixtures::class,
+            ActorFixtures::class,
+            DirectorFixtures::class,
+            PictureFixtures::class,
+            TypeFilmeFixtures::class,
+        );
+    }
+}

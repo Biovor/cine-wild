@@ -1,0 +1,132 @@
+{% extends 'layout.html.twig' %}
+
+{% block container %}
+
+    {% block headerPicture %}
+
+        <!-- Header picture -->
+        <div class="fullWidthPictureContainer headerPicture">
+            <img class="fullWidthPicture" src="{{ asset('css/images/cinewildBan.png') }}" alt="Ciné-Wild"/>
+        </div>
+
+    {% endblock headerPicture %}
+
+    <div class="container">
+
+        <div class="paragraphTitle">
+            <h2>Recherche d'un film</h2>
+        </div>
+
+        <div class="search-area">
+            <div class="search">
+                <div class="row">
+                    <div class="row wilderAutocompletion">
+                        <div class="text-center col-sm-offset-4 col-sm-4 wilderTransition">
+                            {{ form_widget(form.Recherche) }}
+                            {{ form_errors(form.Recherche) }}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row" id="films-list">
+        </div>
+
+        <div class="row">
+            <hr/>
+        </div>
+
+        <div class="search-area">
+            <div class="search">
+                <div class="row">
+                    <div class="text-center col-sm-offset-4 col-sm-4 wilderTransition">
+                        <p class="alternativeText text-center">ou sélectionnez un ou plusieurs critères</p>
+                    </div>
+
+                    <div>
+                        <hr class="col-xs-10 col-xs-offset-1">
+                    </div>
+
+                    <div class="col-lg-12 blocksearch">
+                        {{ form_start(form, {'attr':{'id':'form_search_wilder'}}) }}
+                        {{ form_errors(form) }}
+                        <div class="row">
+                            <div class="col-lg-2 col-lg-offset-1">
+                                {{ form_label(form.actor,'Acteur') }}
+                                {{ form_widget(form.actor) }}
+                                {{ form_errors(form.actor) }}
+                            </div>
+                            <div class="col-lg-2 col-lg-offset-1">
+                                {{ form_label(form.director,'Réalisateur') }}
+                                {{ form_widget(form.director) }}
+                                {{ form_errors(form.director) }}
+                            </div>
+                            <div class="col-lg-2 col-lg-offset-1">
+                                {{ form_label(form.typeFilms,'Genre') }}
+                                {{ form_widget(form.typeFilms) }}
+                                {{ form_errors(form.typeFilms) }}
+                            </div>
+                            <div class="col-lg-2 col-lg-offset-1">
+                                {{ form_label(form.yearOfProduction,'Année de prod') }}
+                                {{ form_widget(form.yearOfProduction) }}
+                                {{ form_errors(form.yearOfProduction) }}
+                            </div>
+                            <div class="col-lg-2 col-lg-offset-1">
+                                {{ form_label(form.publicAge,'Restriction d\'age') }}
+                                {{ form_widget(form.publicAge) }}
+                                {{ form_errors(form.publicAge) }}
+                            </div>
+
+                            <div class="col-lg-2 col-lg-offset-1">
+                                <button type="submit" class="submitButton shadow">
+                                    <i class="fa fa-check" aria-hidden="true"></i>
+                                </button>
+                            </div>
+                        </div>
+
+                        {{ form_end(form) }}
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="list_projects row">
+            <div class="row">
+                {% for film in films %}
+                    <div class="col-xs-4 col-md-3 vignetteFilm">
+                        <a href="{{ path('detailed_movie', { 'id': film.id }) }}">
+                            <div class="col-md-12 image-listFilms">
+
+                                <div class="middle">
+                                    <div class="hoverAgeFilm">{{ film.publicAge.label }}</div>
+                                </div>
+                                <a href="{{ path('detailed_movie', { 'id': film.id }) }}">
+                                    <img class="image-listFilms" src="{{ asset('img/'~ film.picture.image ) }}"
+                                         alt="{{ film.picture.alt }}">
+                                </a>
+                            </div>
+                            <div class="col-md-12 titreVignetteFilm">
+                                <a href="{{ path('detailed_movie', { 'id': film.id }) }}">
+                                    <h3>{{ film.title }}</h3>
+                                </a>
+                            </div>
+                        </a>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+
+        <div class="row">
+            <hr/>
+        </div>
+    </div>
+
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script src="{{ asset('js/ajax_auto.js') }}"></script>
+    <script src="{{ asset('js/bootstrap-select.min.js') }}"></script>
+{% endblock javascripts %}

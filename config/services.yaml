@@ -1,0 +1,72 @@
+# Put parameters here that don't need to change on each machine where the app is deployed
+# https://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
+parameters:
+    locale: 'fr'
+
+services:
+    # default configuration for services in *this* file
+    _defaults:
+        autowire: true      # Automatically injects dependencies in your services.
+        autoconfigure: true # Automatically registers your services as commands, event subscribers, etc.
+        public: false       # Allows optimizing the container by removing unused services; this also means
+                            # fetching services directly from the container via $container->get() won't work.
+                            # The best practice is to be explicit about your dependencies anyway.
+
+    # makes classes in src/ available to be used as services
+    # this creates a service per class whose id is the fully-qualified class name
+    App\:
+        resource: '../src/*'
+        exclude: '../src/{Entity,Migrations,Tests,Kernel.php}'
+
+    # controllers are imported separately to make sure services can be injected
+    # as action arguments even if you don't extend any base controller class
+    App\Controller\:
+        resource: '../src/Controller'
+        tags: ['controller.service_arguments']
+
+    # add more service definitions when explicit configuration is needed
+    # please note that last definitions always *replace* previous
+
+    admin.films:
+        class: App\Admin\FilmsAdmin
+        arguments: [~, App\Entity\Films, ~]
+        tags:
+            - { name: sonata.admin, manager_type: orm, label: Films }
+        public: true
+
+    admin.actor:
+        class: App\Admin\ActorAdmin
+        arguments: [~, App\Entity\Actor, ~]
+        tags:
+            - { name: sonata.admin, manager_type: orm, label: Actor }
+        public: true
+
+    admin.director:
+        class: App\Admin\DirectorAdmin
+        arguments: [~, App\Entity\Director, ~]
+        tags:
+            - { name: sonata.admin, manager_type: orm, label: Director }
+        public: true
+
+    admin.publicAge:
+        class: App\Admin\PublicAgeAdmin
+        arguments: [~, App\Entity\PublicAge, ~]
+        tags:
+            - { name: sonata.admin, manager_type: orm, label: PublicAge }
+        public: true
+
+    admin.typeFilms:
+        class: App\Admin\TypeFilmsAdmin
+        arguments: [~, App\Entity\TypeFilms, ~]
+        tags:
+            - { name: sonata.admin, manager_type: orm, label: TypeFilms }
+        public: true
+
+    admin.yearOfProduction:
+        class: App\Admin\YearOfProductionAdmin
+        arguments: [~, App\Entity\YearOfProduction, ~]
+        tags:
+            - { name: sonata.admin, manager_type: orm, label: YearOfProduction }
+        public: true
+
+

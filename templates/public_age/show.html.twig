@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}PublicAge{% endblock %}
+
+{% block body %}
+    <h1>PublicAge</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ public_age.id }}</td>
+            </tr>
+            <tr>
+                <th>Label</th>
+                <td>{{ public_age.label }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('public_age_index') }}">back to list</a>
+
+    <a href="{{ path('public_age_edit', {'id': public_age.id}) }}">edit</a>
+
+    {{ include('public_age/_delete_form.html.twig') }}
+{% endblock %}

@@ -1,0 +1,51 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Films index{% endblock %}
+
+{% block body %}
+    <h1>Films index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Title</th>
+                <th>OriginalTitle</th>
+                <th>RelaseDate</th>
+                <th>Duration</th>
+                <th>Synopsie</th>
+                <th>PressNote</th>
+                <th>PublicNote</th>
+                <th>Novelty</th>
+                <th>Critical</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for film in films %}
+            <tr>
+                <td>{{ film.id }}</td>
+                <td>{{ film.title }}</td>
+                <td>{{ film.originalTitle }}</td>
+                <td>{{ film.relaseDate ? film.relaseDate|date('Y-m-d') : '' }}</td>
+                <td>{{ film.duration }}</td>
+                <td>{{ film.synopsie }}</td>
+                <td>{{ film.pressNote }}</td>
+                <td>{{ film.publicNote }}</td>
+                <td>{{ film.novelty ? 'Yes' : 'No' }}</td>
+                <td>{{ film.critical }}</td>
+                <td>
+                    <a href="{{ path('films_show', {'id': film.id}) }}">show</a>
+                    <a href="{{ path('films_edit', {'id': film.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="11">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('films_new') }}">Create new</a>
+{% endblock %}

@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New YearOfProduction{% endblock %}
+
+{% block body %}
+    <h1>Create new YearOfProduction</h1>
+
+    {{ include('year_of_production/_form.html.twig') }}
+
+    <a href="{{ path('year_of_production_index') }}">back to list</a>
+{% endblock %}

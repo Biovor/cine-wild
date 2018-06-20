@@ -1,0 +1,110 @@
+{% extends 'layout.html.twig' %}
+
+{% block container %}
+
+    <div class="container-fluid">
+
+        <div class="container">
+
+            <div class="row titleFilm">
+                <p>{{ film.title }}</p>
+            </div>
+
+            <div class="row">
+                <hr/>
+            </div>
+
+            <div class="row profilFilm">
+                <div class="col-lg-6">
+                    <img class="imgFilmDetail" src="{{ asset('img/'~ film.picture.image ) }}"
+                         alt="{{film.picture.alt }}">
+                </div>
+                <div class="col-lg-5">
+                    {% if film.originalTitle is not null %}
+                        <h3 class="originalTitleFilm">Titre Original: {{ film.originalTitle }}</h3>
+                    {% else %}
+                        <h3 class="originalTitleFilm">Titre: {{ film.title }}</h3>
+                    {% endif %}
+                    <p class="dateFilm">Date de sortie: {{ film.relaseDate|date('d M Y') }}</p>
+                    <p class="descriFilm">Durée du film: {{ film.duration }}</p>
+                    <p class="descriFilm">Public restriction: {{ film.publicAge.label }}</p>
+                    <p class="descriFilm">Anée de production: {{ film.yearOfProduction.year}}</p>
+                    <p class="bandeAnnonceFilm"><a class="websiteWilder"
+                                                   href="{{ path('b-a', { 'id': film.id }) }}">Bande annonce du
+                            film.</a></p>
+
+                    {% if film.pressNote is not null %}
+                        <p class="descriFilm">Note de la press : {{ film.pressNote }}/10.</p>
+                        <div class ="fontStar">
+                            {% for i in 1..film.pressNote %}
+                                <i class="fas fa-star"></i>
+                            {% endfor %}
+                            {% if film.pressNote < 10 %}
+                                {% for i in 1..10-film.pressNote %}
+                                    <i class="far fa-star"></i>
+                                {% endfor %}
+                            {% endif %}
+                        </div>
+                    {% endif %}
+
+                    {% if film.publicNote is not null %}
+                        <p class="descriFilm">Note du public : {{ film.publicNote }}/10.</p>
+                        <div class="fontStar">
+                            {% for i in 1..film.publicNote %}
+                                <i class="fas fa-star"></i>
+                            {% endfor %}
+                            {% if film.pressNote < 10 %}
+                                {% for i in 1..10-film.publicNote %}
+                                    <i class="far fa-star"></i>
+                                {% endfor %}
+                            {% endif %}
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+
+            <div class="row">
+                <hr/>
+            </div>
+
+            <div class="row contentDescriFilm">
+                <div class="col-md-3 contentDescriFilmLeft">
+                    <div class="descriLeftFilm">
+                        <h4 class="descriLeftFilm">Genre:</h4>
+                        <ul class="descriLeftFilm">{% for types in film.types %}
+                                <li class="descriLeftFilm">{{ types.label }}</li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                    <div class="descriLeftFilm">
+                        <h4 class="descriLeftFilm">Réalisateur:</h4>
+                        <ul class="descriLeftFilm">{% for directors in film.directors %}
+                                <li class="descriLeftFilm">{{ directors.lastName }} {{ directors.firstName }}</li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                    <div class="descriLeftFilm">
+                        <h4 class="descriLeftFilm">Acteur:</h4>
+                        <ul class="descriLeftFilm">{% for actors in film.actors %}
+                                <li class="descriLeftFilm">{{ actors.lastName }} {{ actors.firstName }}</li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-md-8 col-md-offset-1 contentDescriFilmRight">
+                    <div>
+                        <h3 class='titleTextFilm'>Synopsie</h3>
+                        <p>{{ film.synopsie }}</p>
+                    </div>
+                    <div>
+                        <h3 class='titleTextFilm'>Critique</h3>
+                        <p>{{ film.critical }}</p>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <hr/>
+            </div>
+        </div>
+    </div>
+{% endblock container %}

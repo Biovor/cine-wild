@@ -1,0 +1,81 @@
+{% extends 'layout.html.twig' %}
+
+{% block container %}
+
+    {% block headerPicture %}
+
+        <!-- Header picture -->
+        <div class="fullWidthPictureContainer headerPicture">
+            <img class="fullWidthPicture" src="{{ asset('css/images/cinewildBan.png') }}" alt="Ciné-Wild"/>
+        </div>
+
+    {% endblock headerPicture %}
+
+    {#Bloc new films#}
+    <h2 class="titleTextFilm">Bienvenue sur le ciné-wilde.</h2>
+    <div class="row">
+        <div class="col-xs-offset-1 col-xs-10">
+            <div class="row">
+                <h3>Les nouveautés :</h3>
+                {% for newFilm in newFilms if newFilm.novelty |slice(0, 6) %}
+                    <div class="col-xs-6 col-md-4 col-lg-2 miniVignetteFilm">
+                        <a href="{{ path('detailed_movie', { 'id': newFilm.id }) }}">
+                            <div class="col-md-12 image-miniListFilms">
+
+                                <div class="middle">
+                                    <div class="hoverAgeFilm">{{ newFilm.publicAge.label }}</div>
+                                </div>
+                                <a href="{{ path('detailed_movie', { 'id': newFilm.id }) }}">
+                                    <img class="image-miniListFilms" src="{{ asset('img/'~ newFilm.picture.image ) }}"
+                                         alt="{{ newFilm.picture.alt }}">
+                                </a>
+                            </div>
+                            <div class="col-md-12 titreVignetteFilm">
+                                <a href="{{ path('detailed_movie', { 'id': newFilm.id }) }}">
+                                    <h3>{{ newFilm.title }}</h3>
+                                </a>
+                            </div>
+                        </a>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <hr/>
+    </div>
+    {#Bloc random films#}
+    <div class="row">
+        <div class="col-xs-offset-1 col-xs-10">
+            <div class="row">
+                <h3>Notre sélection de films:</h3>
+                {% for newFilm in newFilms |slice(0, 6) %}
+                    <div class="col-xs-6 col-md-4 col-lg-2 miniVignetteFilm randomliste">
+                        <a href="{{ path('detailed_movie', { 'id': newFilm.id }) }}">
+                            <div class="col-md-12 image-miniListFilms">
+
+                                <div class="middle">
+                                    <div class="hoverAgeFilm">{{ newFilm.publicAge.label }}</div>
+                                </div>
+                                <a href="{{ path('detailed_movie', { 'id': newFilm.id }) }}">
+                                    <img class="image-miniListFilms" src="{{ asset('img/'~ newFilm.picture.image ) }}"
+                                         alt="{{ newFilm.picture.alt }}">
+                                </a>
+                            </div>
+                            <div class="col-md-12 titreVignetteFilm">
+                                <a href="{{ path('detailed_movie', { 'id': newFilm.id }) }}">
+                                    <h3>{{ newFilm.title }}</h3>
+                                </a>
+                            </div>
+                        </a>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <hr/>
+    </div>
+{% endblock %}
+

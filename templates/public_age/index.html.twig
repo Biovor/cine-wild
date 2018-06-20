@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}PublicAge index{% endblock %}
+
+{% block body %}
+    <h1>PublicAge index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Label</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for public_age in public_ages %}
+            <tr>
+                <td>{{ public_age.id }}</td>
+                <td>{{ public_age.label }}</td>
+                <td>
+                    <a href="{{ path('public_age_show', {'id': public_age.id}) }}">show</a>
+                    <a href="{{ path('public_age_edit', {'id': public_age.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="3">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('public_age_new') }}">Create new</a>
+{% endblock %}

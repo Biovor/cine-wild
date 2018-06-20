@@ -1,0 +1,12 @@
+{% extends 'layout.html.twig' %}
+
+{% block container %}
+<body onload="InitFrame()" onresize="InitFrame()">
+<div class = "background-BA">
+    <div class = 'iframe'> 
+        <iframe id="corpiframe" name="corpiframe" src="{{ film.lienBa }}" allowtransparency="true" 
+                                   style="border:none ;" scrolling="auto" height="100%" width="100%"> </iframe>
+    </div>
+</div>
+{% endblock container %}
+

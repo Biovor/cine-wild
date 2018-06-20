@@ -1,0 +1,6 @@
+vich_uploader:
+    db_driver: orm
+    mappings:
+        picture:
+            uri_prefix: /img/
+            upload_destination: '%kernel.root_dir%/../public/img/'

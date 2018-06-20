@@ -1,0 +1,103 @@
+{% extends 'base.html.twig' %}
+
+{% block stylesheets %}
+
+    {{ parent() }}
+    <!-- Navbar CSS -->
+    <link rel="stylesheet" href="{{ asset('css/scrolling-nav.css') }}">
+
+    <!-- Style -->
+    <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+
+{% endblock stylesheets %}
+
+{% block nav %}
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-default navbar-fixed-top container-fluid" role="navigation">
+        <div class="container">
+            <div class="navbar-header page-scroll container-fluid">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+
+                <a class="page-scroll" href="https://wildcodeschool.fr" target="_blank">
+                    <img class="navbar-brand page-scroll" src="{{ asset('css/images/cinewild.png') }}"
+                         alt="La Wild"/>
+                </a>
+                <a class="navbar-brand page-scroll" href="#page-top">Ciné-Wild</a>
+            </div>
+
+            <div class="collapse navbar-collapse navbar-ex1-collapse container-fluid">
+                <ul class="nav navbar-nav">
+                    <li class="hidden">
+                        <a class="page-scroll" href="#page-top"></a>
+                    </li>
+                    <li>
+                        <a class="page-scroll" href="{{ path('home') }}">
+                            <i class="fa fa-home" aria-hidden="true"></i>&nbsp;
+                            Accueil</a>
+                    </li>
+                    <li>
+                        <a class="page-scroll" href="{{ path('search') }}">
+                            <i class="fa fa-search" aria-hidden="true"></i>&nbsp;
+                            Recherche d'un film</a>
+                    </li>
+                    <li>
+                        <a class="page-scroll" href="{{ asset('/admin') }}">
+                            <i class="fa fa-search" aria-hidden="true"></i>&nbsp;
+                            Administration</a>
+                    </li>
+                </ul>
+            </div>
+
+        </div>
+
+    </nav>
+
+{% endblock nav %}
+
+{% block footer %}
+
+    <footer class="container-fluid homeFooter">
+
+        <!-- Footer logo -->
+        <img class="footerLogo shadow" src="{{ asset('css/images/logoOrangeBlanc.png') }}"
+             alt="La Wild"/>
+
+        <!-- Social networks -->
+        <div class="socialbloc">
+
+            <h4 class="footerH4">Suivez la Wild Code School sur vos réseaux favoris</h4>
+
+            <div class="footerSocial">
+                <div class="footerSocialIcon">
+                    <a href="https://www.facebook.com/wildcodeschool"><i class=" fab fa-facebook-f shadow"></i></a>
+                </div>
+                <div class="footerSocialIcon">
+                    <a href="https://twitter.com/wildcodeschool"><i class=" fab fa-twitter shadow"></i></a>
+                </div>
+                <div class="footerSocialIcon">
+                    <a href="https://university.linkedin.com/linkedin-for-students"><i class=" fab fa-linkedin-in shadow"></i></a>
+                </div>
+                <div class="footerSocialIcon">
+                    <a href="https://www.youtube.com/channel/UCi99G_0QPx5sYsK8zdvQzfw"><i class=" fab fa-youtube shadow"></i></a>
+                </div>
+                <div class="footerSocialIcon">
+                    <a href="https://www.instagram.com/wildcodeschool/"><i class=" fab fa-instagram shadow"></i></a>
+                </div>
+                <div class="footerSocialIcon">
+                    <a href="https://github.com/WildCodeSchool"><i class=" fab fa-github shadow"></i></a>
+                </div>
+            </div>
+
+        </div>
+        <!-- Copyrights -->
+        <div class="footerCopyrights">
+            © 2018 Duriez Ludovic
+        </div>
+    </footer>
+
+{% endblock footer %}
