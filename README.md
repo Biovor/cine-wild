@@ -24,7 +24,10 @@ ATTENTION il peut y avoir une erreur lors du chargement des fixtures il faut jus
 
 Profités de l’application ( les visuels ne sont pas fini mais le principal des fonctionnalités et là ….) 
 
-sujet du test 
+
+
+SUJET DU TEST :
+
 
 
 Hi dude, for this exercise, you’ll have to create an entire project about watching movies, like
