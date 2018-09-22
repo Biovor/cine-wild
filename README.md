@@ -29,32 +29,47 @@ sujet du test
 
 Hi dude, for this exercise, you’ll have to create an entire project about watching movies, like
 the well known Allociné!
+
 The website you have to create should include the main features that are very
 useful for moviegoers :D
+
 1/ Main instructions
+
 You have to create a website that proposes some functionalities, such as adding movies,
 listing them, deleting them, selecting only one using criteria (type, language...), searching a
 specific movie, not only with his own name, and listing random films on the home page.
+
 We’ll evaluate your ability to create and manage features that are not listed above. These
 must be relevant for your website. You can get inspiration on popular movies websites just
 like Allociné or Imdb.
+
 In this exercise you can use the technology you want and/or that you are used to handle.
+
 2/ Indications
+
 The correction will not only focus on features, so think about your project design
 before developing your website. The main points that we will check : relationship
 between entities (if that is necessary), structure and design, the quality of research,
 ergonomics, user interaction and so on.
+
 Your code must :
+
 • be clean,
+
 • use JS, PHP, or another language standards,
+
 • have clear variable names
+
 • be commented.
+
 The project must be functional. Get to the essential points right away.
 
 To submit your result, create a new repository with your GitHub
 profile, and push your work in it.
+
 Think about making atomic commits, and also write a readme,
 which will help us to initialize your project.
+
 To conclude, regarding HTML templates, here is an example of expected visual rendering.
 This example should be an inspiration, this is not a mandatory model to follow.
 A result as below is enough (instead of recipes, we will get movies!).
